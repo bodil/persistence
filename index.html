@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>PERSISTENCE WILL BE REWARDED</title>
+    <meta name="author" content="your name here">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+      body { visibility: hidden; background: black; }
+    </style>
+  </head>
+  <body>
+
+    <div id="slides" data-background="m/knuth.jpg">
+
+      <section class="title">
+        <h1>PERSISTENCE</h1>
+        <h2>WILL BE</h2>
+        <h1>REWARDED</h1>
+        <p>@bodil</p>
+      </section>
+
+      <section class="title">
+      </section>
+
+      <section>
+        <h3>WHAT IS A DATA STRUCTURE?</h3>
+        <p class="fragment">A way of organising data so that it can be accessed and modified efficiently.</p>
+        <li class="fragment" style="margin-top: 0.5em">a list</li>
+        <li class="fragment">a key/value store</li>
+      </section>
+
+      <section class="photo" data-image="m/array.svg">
+      </section>
+
+      <section>
+        <h3>PERSISTENT DATA STRUCTURES</h3>
+        <p>A data structure that<br><i>preserves the previous version of itself</i><br>when modified.</p>
+      </section>
+
+      <section>
+        <h1>WHY?</h1>
+      </section>
+
+      <section>
+        <h3>REASONING</h3>
+        <p class="fragment">When you call a function, it's easier if the only change in the world is that there's a new thing that came out of the function.</p>
+        <!-- <p class="fragment">Not usually a problem in Rust, tbh.</p> -->
+      </section>
+
+      <section>
+        <h3>EVOLUTION OF STATE</h3>
+        <li class="fragment">Recursive algorithms</li>
+        <li class="fragment">Stateful apps can replay state</li>
+      </section>
+
+      <section>
+        <h3>PERSISTENT DATA STRUCTURES</h3>
+        <p>Won't that be extremely expensive?</p>
+      </section>
+
+      <section class="photo" data-image="m/cons-cell.svg">
+      </section>
+
+      <section class="photo" data-image="m/cons-annotated.svg">
+      </section>
+
+      <section class="photo blank" data-image="m/ibm704.jpg">
+      </section>
+
+      <section>
+        <h3>THESE NAMES COMPOSE!</h3>
+        <p class="fragment"><i>cadr</i> = car of cdr = second element</p>
+        <p class="fragment"><i>caddr</i> = car of cdr of cdr = third element</p>
+        <p class="fragment"><i>cddr</i> = cdr of cdr = third element onward</p>
+      </section>
+
+      <section class="photo" data-image="m/dratini.png">
+        <div class="label" style="position: absolute; top: 2em">head →</div>
+        <div class="label" style="position: absolute; bottom: 2em">tail →</div>
+      </section>
+
+      <section data-tree="on">
+        "conslist"
+      </section>
+
+      <section>
+        <h3>COMPLEXITY</h3>
+        <p>We need a way to talk about the efficiency of operations on data structures.</p>
+        <p class="fragment">Big O notation!</p>
+      </section>
+
+      <section>
+        <h3>CONSTANT TIME: O(1)</h3>
+        <p>Same amount of work regardless of the size of the data structure.</p>
+      </section>
+
+      <section>
+        <h3>LINEAR TIME: O(n)</h3>
+        <p>Number of operations proportional to the size <i>(n)</i> of the data structure.</p>
+      </section>
+
+      <section>
+        <h3>LOGARITHMIC TIME: O(log n)</h3>
+        <p>Number of operations logarithmic to the size of the data structure.</p>
+      </section>
+
+      <section>
+        <h3>POLYNOMIAL TIME: O(n²)</h3>
+        <p>Very bad.</p>
+      </section>
+
+      <section>
+        <h3>EXPONENTIAL TIME: O(2ⁿ)</h3>
+        <p>Absolute disaster.</p>
+      </section>
+
+      <section>
+        <h3>BIG O NOTATION</h3>
+        <p>O(1) = constant time</p>
+        <p>O(log n) = logarithmic time</p>
+        <p>O(n) = linear time</p>
+        <p class="fragment">O(n log n) = linear × logarithmic time</p>
+      </section>
+
+      <section>
+        <h3>ARRAY COMPLEXITY</h3>
+        <p>Push/pop front: <span class="fragment">O(n)</span></p>
+        <p>Push/pop back: <span class="fragment">O(n)</span></p>
+        <p>Concatenate: <span class="fragment">O(n + m)</span></p>
+        <p>Lookup: <span class="fragment">O(1)</span></p>
+      </section>
+
+      <section>
+        <h3>CONS LIST COMPLEXITY</h3>
+        <p>Push/pop front: <span class="fragment">O(1)</span></p>
+        <p>Push/pop back: <span class="fragment">O(n)</span></p>
+        <p>Concatenate: <span class="fragment">O(n)</span></p>
+        <p>Lookup: <span class="fragment">O(n)</span></p>
+      </section>
+
+      <section>
+        <h3>AMORTISATION</h3>
+        <p>Spreading the cost over several operations.</p>
+      </section>
+
+      <section class="photo" data-image="m/array-capacity.svg">
+      </section>
+
+      <section>
+        <h3>CAPACITY ARRAY COMPLEXITY</h3>
+        <p>Push/pop front: <span class="fragment">O(n)</span></p>
+        <p>Push/pop back: <span class="fragment">O(1)*</span></p>
+      </section>
+
+      <section class="photo" data-image="m/sudowoodo.png">
+      </section>
+
+      <section data-tree="on">
+        "binarytree"
+      </section>
+
+      <section>
+        <h3>BINARY TREE COMPLEXITY</h3>
+        <p>Lookup: <span class="fragment">O(log₂ n)</span></p>
+        <p>Insert: <span class="fragment">O(log₂ n)</span></p>
+      </section>
+
+      <section class="photo" data-image="m/binary-tree.svg">
+      </section>
+
+      <section class="photo" data-image="m/binary-insert.svg">
+      </section>
+
+      <section>
+        <h3>IMPROVING PERFORMANCE</h3>
+        <p>Can we find ways to make tree lookup faster?</p>
+      </section>
+
+      <section class="photo" data-image="m/b-tree.svg">
+      </section>
+
+      <section>
+        <h3>B-TREE COMPLEXITY</h3>
+        <p>Lookup: <span class="fragment">O(logₖ n)</span></p>
+        <p>Insert: <span class="fragment">O(logₖ n + d*)</span></p>
+      </section>
+
+      <section>
+        <h3>TRIES</h3>
+        <p>Tries are <i>prefix</i> or <i>radix</i> based search trees.</p>
+        <p class="fragment">They also prove that naming is hard and sometimes fails spectacularly.</p>
+      </section>
+
+      <section class="photo" data-image="m/trie.png">
+      </section>
+
+      <section class="photobg meme" data-image="m/bagwell.jpg">
+        <p class="bottom">Phil Bagwell</p>
+      </section>
+
+      <section class="photobg meme" data-image="m/hickey.jpg">
+        <p class="bottom">Rich Hickey</p>
+      </section>
+
+      <section class="photo" data-image="m/vector-trie.svg">
+      </section>
+
+      <section>
+        <h3>VECTOR TRIE COMPLEXITY</h3>
+        <p>Lookup: O(logₖ n)</p>
+        <p>Push/pop back: O(logₖ n)</p>
+        <p>Push/pop front: O(n)</p>
+      </section>
+
+      <section class="photo" data-image="m/vector-trie-tail.svg">
+      </section>
+
+      <section>
+        <h3>VECTOR TRIE WITH TAIL</h3>
+        <p>Lookup: O(logₖ n)</p>
+        <p>Push/pop back: O(1)*</p>
+        <p>Push/pop front: O(n)</p>
+      </section>
+
+      <section>
+        <h3>FLOATING ORIGIN VECTOR TRIE</h3>
+        <p>Lookup: O(logₖ n)</p>
+        <p>Push/pop back: O(1)*</p>
+        <p>Push/pop front: O(1)*</p>
+      </section>
+
+      <section class="photo" data-image="m/hamt.svg">
+      </section>
+
+      <section>
+        <h3>HASH ARRAY MAPPED TRIE</h3>
+        <p>Lookup: O(logₖ n)</p>
+        <p>Insert: O(logₖ n)</p>
+      </section>
+
+      <section>
+        <h3>THE PERFECT DATA STRUCTURE</h3>
+        <p>For maps/sets, HAMTs are as good as it gets.</p>
+        <p class="fragment">For sequences, we're not there yet.</p>
+      </section>
+
+      <section>
+        <h3>CONCATENATION</h3>
+        <p>Everything we've seen so far concatenates at O(n).</p>
+      </section>
+
+      <section>
+        <h3>CATENABLE LISTS</h3>
+        <p>An old classic: has a head and a deque of lists as tail.</p>
+        <p>Push/pop: O(1)*</p>
+        <p>Concat: O(1)*</p>
+        <p>Lookup: O(n)</p>
+      </section>
+
+      <section>
+        <h3>FINGER TREES</h3>
+        <p>The cool new Haskell thing.</p>
+        <p>Push/pop: O(1)*</p>
+        <p>Concat: O(log n)</p>
+        <p>Lookup: O(n)</p>
+      </section>
+
+      <section class="photobg meme" data-image="m/bagwell.jpg">
+        <p class="top small">DO YOU HAVE A MOMENT TO TALK ABOUT</p>
+        <p class="bottom">RELAXED RADIX BALANCED TREES</p>
+      </section>
+
+      <section class="photo" data-image="m/rrb-tree.svg">
+      </section>
+
+      <section>
+        <h3>RRB TREES</h3>
+        <p>Push/pop: O(logₖ n)</p>
+        <p>Concat: O(logₖ n)</p>
+        <p>Split: O(logₖ n)</p>
+        <p>Lookup: O(logₖ n)</p>
+      </section>
+
+      <section>
+        <h3>READING LIST</h3>
+        <p>Okasaki: <i>Purely Functional Data Structures</i></p>
+        <p>Bagwell: <i>Ideal Hash Trees</i></p>
+        <p>Bagwell, Rompf: <i>RRB Trees</i></p>
+        <p>Stucki, Rompf, Ureche, Bagwell: <i>RRB Vector</i></p>
+        <p>Hinze, Paterson: <i>Finger Trees</i></p>
+        <p>Acar, Charguéraud, Rainey: <i>Chunked Sequences</i></p>
+      </section>
+
+      <section>
+        <h3>IMPLEMENTATIONS</h3>
+        <p>JavaScript: <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
+        <p>Java: <a href="https://github.com/lacuna/bifurcan">Bifurcan</a></p>
+        <p>C++: <a href="https://sinusoid.es/immer/">Immer</a></p>
+        <p>Rust: <a href="http://immutable.rs">Im</a></p>
+      </section>
+
+      <section class="title" data-background="m/belka-strelka.jpg">
+        <h1>Thank you!</h1>
+        <p><a href="https://bodil.lol/persistence/">bodil.lol/persistence/</a></p>
+        <p>@bodil</p>
+      </section>
+
+      <!-- <section data-repl="on">
+           <div class="row">
+           <div data-id="rust-ed" data-lang="rust" data-type="editor" data-target="rust-out">
+           #[macro_use]
+           extern crate im;
+
+           fn main() {
+           let greet_the_fathers = vector![
+           "Hello Joe!",
+           "Hello Mike!",
+           "Hello Robert!"
+           ];
+           for words in greet_the_fathers {
+           println!("{}", words);
+           }
+           }
+           </div>
+           <div data-id="rust-out" data-lang="rust" data-type="repl" data-target="rust-out"></div>
+           </div>
+           </section> -->
+
+      <script type="text/javascript" src="dist/pink/pink.js"></script>
+  </body>
+</html>

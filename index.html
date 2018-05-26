@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <title>PERSISTENCE WILL BE REWARDED</title>
-    <meta name="author" content="your name here">
+    <meta name="author" content="Bodil">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -17,6 +17,7 @@
     <div id="slides" data-background="m/knuth.jpg">
 
       <section class="title">
+        <p>immutable.rs</p>
         <h1>PERSISTENCE</h1>
         <h2>WILL BE</h2>
         <h1>REWARDED</h1>
@@ -29,62 +30,18 @@
       <section>
         <h3>WHAT IS A DATA STRUCTURE?</h3>
         <p class="fragment">A way of organising data so that it can be accessed and modified efficiently.</p>
-        <li class="fragment" style="margin-top: 0.5em">a list</li>
-        <li class="fragment">a key/value store</li>
+        <li class="fragment" style="margin-top: 0.5em">list</li>
+        <li class="fragment">map</li>
       </section>
 
-      <section class="photo" data-image="m/array.svg">
+      <section>
+        <h3>MUTABLE VS IMMUTABLE?</h3>
+        <p>A mutable value can change (like Vec), but an immutable value is the same forever (like i32).</p>
       </section>
 
       <section>
         <h3>PERSISTENT DATA STRUCTURES</h3>
-        <p>A data structure that<br><i>preserves the previous version of itself</i><br>when modified.</p>
-      </section>
-
-      <section>
-        <h1>WHY?</h1>
-      </section>
-
-      <section>
-        <h3>REASONING</h3>
-        <p class="fragment">When you call a function, it's easier if the only change in the world is that there's a new thing that came out of the function.</p>
-        <!-- <p class="fragment">Not usually a problem in Rust, tbh.</p> -->
-      </section>
-
-      <section>
-        <h3>EVOLUTION OF STATE</h3>
-        <li class="fragment">Recursive algorithms</li>
-        <li class="fragment">Stateful apps can replay state</li>
-      </section>
-
-      <section>
-        <h3>PERSISTENT DATA STRUCTURES</h3>
-        <p>Won't that be extremely expensive?</p>
-      </section>
-
-      <section class="photo" data-image="m/cons-cell.svg">
-      </section>
-
-      <section class="photo" data-image="m/cons-annotated.svg">
-      </section>
-
-      <section class="photo blank" data-image="m/ibm704.jpg">
-      </section>
-
-      <section>
-        <h3>THESE NAMES COMPOSE!</h3>
-        <p class="fragment"><i>cadr</i> = car of cdr = second element</p>
-        <p class="fragment"><i>caddr</i> = car of cdr of cdr = third element</p>
-        <p class="fragment"><i>cddr</i> = cdr of cdr = third element onward</p>
-      </section>
-
-      <section class="photo" data-image="m/dratini.png">
-        <div class="label" style="position: absolute; top: 2em">head →</div>
-        <div class="label" style="position: absolute; bottom: 2em">tail →</div>
-      </section>
-
-      <section data-tree="on">
-        "conslist"
+        <p>A data structure that <i>persists its current state</i> when changed.</p>
       </section>
 
       <section>
@@ -109,16 +66,6 @@
       </section>
 
       <section>
-        <h3>POLYNOMIAL TIME: O(n²)</h3>
-        <p>Very bad.</p>
-      </section>
-
-      <section>
-        <h3>EXPONENTIAL TIME: O(2ⁿ)</h3>
-        <p>Absolute disaster.</p>
-      </section>
-
-      <section>
         <h3>BIG O NOTATION</h3>
         <p>O(1) = constant time</p>
         <p>O(log n) = logarithmic time</p>
@@ -127,46 +74,45 @@
       </section>
 
       <section>
-        <h3>ARRAY COMPLEXITY</h3>
-        <p>Push/pop front: <span class="fragment">O(n)</span></p>
-        <p>Push/pop back: <span class="fragment">O(n)</span></p>
-        <p>Concatenate: <span class="fragment">O(n + m)</span></p>
-        <p>Lookup: <span class="fragment">O(1)</span></p>
-      </section>
-
-      <section>
-        <h3>CONS LIST COMPLEXITY</h3>
-        <p>Push/pop front: <span class="fragment">O(1)</span></p>
-        <p>Push/pop back: <span class="fragment">O(n)</span></p>
-        <p>Concatenate: <span class="fragment">O(n)</span></p>
-        <p>Lookup: <span class="fragment">O(n)</span></p>
-      </section>
-
-      <section>
         <h3>AMORTISATION</h3>
         <p>Spreading the cost over several operations.</p>
+      </section>
+
+      <section class="photo" data-image="m/array.svg">
       </section>
 
       <section class="photo" data-image="m/array-capacity.svg">
       </section>
 
+      <section class="photo" data-image="m/cons-cell.svg">
+      </section>
+
+      <section class="photo" data-image="m/cons-list.svg">
+      </section>
+
+      <section class="photo" data-image="m/cons-action.svg">
+      </section>
+
+      <section class="photo" data-image="m/cons-annotated.svg">
+      </section>
+
+      <section class="photo blank" data-image="m/ibm704.jpg">
+      </section>
+
       <section>
-        <h3>CAPACITY ARRAY COMPLEXITY</h3>
-        <p>Push/pop front: <span class="fragment">O(n)</span></p>
-        <p>Push/pop back: <span class="fragment">O(1)*</span></p>
+        <h3>THESE NAMES COMPOSE!</h3>
+        <p class="fragment"><i>cadr</i> = car of cdr = second element</p>
+        <p class="fragment"><i>caddr</i> = car of cdr of cdr = third element</p>
+        <p class="fragment"><i>cddr</i> = cdr of cdr = third element onward</p>
+        <p class="fragment"><i>caar</i> = car of car = first element of first element</p>
+      </section>
+
+      <section class="photo" data-image="m/dratini.png">
+        <div class="label" style="position: absolute; top: 2em">head →</div>
+        <div class="label" style="position: absolute; bottom: 2em">tail →</div>
       </section>
 
       <section class="photo" data-image="m/sudowoodo.png">
-      </section>
-
-      <section data-tree="on">
-        "binarytree"
-      </section>
-
-      <section>
-        <h3>BINARY TREE COMPLEXITY</h3>
-        <p>Lookup: <span class="fragment">O(log₂ n)</span></p>
-        <p>Insert: <span class="fragment">O(log₂ n)</span></p>
       </section>
 
       <section class="photo" data-image="m/binary-tree.svg">
@@ -175,24 +121,18 @@
       <section class="photo" data-image="m/binary-insert.svg">
       </section>
 
-      <section>
-        <h3>IMPROVING PERFORMANCE</h3>
-        <p>Can we find ways to make tree lookup faster?</p>
-      </section>
-
       <section class="photo" data-image="m/b-tree.svg">
       </section>
 
-      <section>
-        <h3>B-TREE COMPLEXITY</h3>
-        <p>Lookup: <span class="fragment">O(logₖ n)</span></p>
-        <p>Insert: <span class="fragment">O(logₖ n + d*)</span></p>
+      <section class="photo blank meme" data-image="m/fredkin.jpg">
+        <p class="top">TRIES</p>
+        <p class="bottom small">and the hardest problem in computer science</p>
       </section>
 
       <section>
         <h3>TRIES</h3>
         <p>Tries are <i>prefix</i> or <i>radix</i> based search trees.</p>
-        <p class="fragment">They also prove that naming is hard and sometimes fails spectacularly.</p>
+        <p class="fragment">Henceforth: RADIX TREES</p>
       </section>
 
       <section class="photo" data-image="m/trie.png">
@@ -200,6 +140,9 @@
 
       <section class="photobg meme" data-image="m/bagwell.jpg">
         <p class="bottom">Phil Bagwell</p>
+      </section>
+
+      <section class="photo" data-image="m/hamt.svg">
       </section>
 
       <section class="photobg meme" data-image="m/hickey.jpg">
@@ -210,63 +153,7 @@
       </section>
 
       <section>
-        <h3>VECTOR TRIE COMPLEXITY</h3>
-        <p>Lookup: O(logₖ n)</p>
-        <p>Push/pop back: O(logₖ n)</p>
-        <p>Push/pop front: O(n)</p>
-      </section>
-
-      <section class="photo" data-image="m/vector-trie-tail.svg">
-      </section>
-
-      <section>
-        <h3>VECTOR TRIE WITH TAIL</h3>
-        <p>Lookup: O(logₖ n)</p>
-        <p>Push/pop back: O(1)*</p>
-        <p>Push/pop front: O(n)</p>
-      </section>
-
-      <section>
-        <h3>FLOATING ORIGIN VECTOR TRIE</h3>
-        <p>Lookup: O(logₖ n)</p>
-        <p>Push/pop back: O(1)*</p>
-        <p>Push/pop front: O(1)*</p>
-      </section>
-
-      <section class="photo" data-image="m/hamt.svg">
-      </section>
-
-      <section>
-        <h3>HASH ARRAY MAPPED TRIE</h3>
-        <p>Lookup: O(logₖ n)</p>
-        <p>Insert: O(logₖ n)</p>
-      </section>
-
-      <section>
-        <h3>THE PERFECT DATA STRUCTURE</h3>
-        <p>For maps/sets, HAMTs are as good as it gets.</p>
-        <p class="fragment">For sequences, we're not there yet.</p>
-      </section>
-
-      <section>
-        <h3>CONCATENATION</h3>
-        <p>Everything we've seen so far concatenates at O(n).</p>
-      </section>
-
-      <section>
-        <h3>CATENABLE LISTS</h3>
-        <p>An old classic: has a head and a deque of lists as tail.</p>
-        <p>Push/pop: O(1)*</p>
-        <p>Concat: O(1)*</p>
-        <p>Lookup: O(n)</p>
-      </section>
-
-      <section>
-        <h3>FINGER TREES</h3>
-        <p>The cool new Haskell thing.</p>
-        <p>Push/pop: O(1)*</p>
-        <p>Concat: O(log n)</p>
-        <p>Lookup: O(n)</p>
+        <p>Why can't we just have a data structure without any tradeoffs?</p>
       </section>
 
       <section class="photobg meme" data-image="m/bagwell.jpg">
@@ -280,33 +167,114 @@
       <section>
         <h3>RRB TREES</h3>
         <p>Push/pop: O(logₖ n)</p>
+        <p>Lookup: O(logₖ n)</p>
         <p>Concat: O(logₖ n)</p>
         <p>Split: O(logₖ n)</p>
-        <p>Lookup: O(logₖ n)</p>
       </section>
 
       <section>
-        <h3>READING LIST</h3>
-        <p>Okasaki: <i>Purely Functional Data Structures</i></p>
-        <p>Bagwell: <i>Ideal Hash Trees</i></p>
-        <p>Bagwell, Rompf: <i>RRB Trees</i></p>
-        <p>Stucki, Rompf, Ureche, Bagwell: <i>RRB Vector</i></p>
-        <p>Hinze, Paterson: <i>Finger Trees</i></p>
-        <p>Acar, Charguéraud, Rainey: <i>Chunked Sequences</i></p>
+        <h1>WHY?</h1>
       </section>
 
       <section>
-        <h3>IMPLEMENTATIONS</h3>
-        <p>JavaScript: <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
-        <p>Java: <a href="https://github.com/lacuna/bifurcan">Bifurcan</a></p>
-        <p>C++: <a href="https://sinusoid.es/immer/">Immer</a></p>
-        <p>Rust: <a href="http://immutable.rs">Im</a></p>
+        <h3>REASONING</h3>
+        <p>Immutable values make it easier to reason about your program!</p>
+        <p class="fragment">(the Haskell defence)</p>
+      </section>
+
+      <section>
+        <h3>THREAD SAFETY</h3>
+        <p>If a value never changes, you can't have race conditions when changing it.</p>
+      </section>
+
+      <section>
+        <h3>EVOLVING STATE</h3>
+        <p class="fragment">Recursive algorithms can backtrack easily</p>
+        <p class="fragment">Stateful apps can replay state</p>
+      </section>
+
+      <section>
+        <h3>THEY'RE FASTER!</h3>
+        <p class="fragment">Cloning is always O(1)!</p>
+      </section>
+
+      <section>
+        <h3>SO VEC IS P COOL</h3>
+        <p>Its big O isn't that great, but -</p>
+        <p class="fragment">It's unbeatable with cache locality</p>
+        <p class="fragment">Chunking techniques let us lean on that</p>
+      </section>
+
+      <section>
+        <h3>MUTABLE ALWAYS BEATS IMMUTABLE</h3>
+        <p class="fragment">Clojure has "transients" for this.<br>Haskell has the ST monad.</p>
+      </section>
+
+      <section data-highlight="on">
+        <h3>🐮 ALL YOU NEED IS COW 🐮</h3>
+        <pre class="rust">
+
+  fn Arc::make_mut(this: &amp;mut Arc&lt;T&gt;) -&gt; &amp;mut T
+        </pre>
+        <h3 class="fragment">🐄 COW IS ALL YOU NEED 🐄</h3>
+      </section>
+
+      <section>
+        <h3>MUTABLE WITH IMMUTABLE GUARANTEES</h3>
+        <p>If you're the sole owner, you're always mutable.</p>
+      </section>
+
+      <section>
+        <h3>LET'S TALK BIG O</h3>
+        <p>RRB vectors do complex things smarter than Vec</p>
+        <p class="fragment">With chunking, simpler ops can perform at Vec like speeds</p>
+        <p class="fragment">And at small sizes, it literally is Vec!</p>
+        <p class="fragment">Memory footprint is only slightly worse than Vec</p>
+      </section>
+
+      <section>
+        <h3>WHAT ABOUT MAPS</h3>
+        <p>Maps should perform close to std::collections</p>
+        <p class="fragment">…if I've done my job right</p>
+        <p class="fragment">Still a slightly worse memory footprint</p>
+      </section>
+
+      <section>
+        <h3>DESIGN CHOICES</h3>
+        <p class="fragment">As complete as Haskell <span class="fragment">(and Clojure)</span></p>
+        <p class="fragment">But should feel like Rust</p>
+      </section>
+
+      <section>
+        <p>Nobody is going to use a library with bad documentation.</p>
+      </section>
+
+      <section>
+        <h3>ABOUT THE ARCS</h3>
+        <p>Im wraps values in <i>Arc</i> to avoid a Clone constraint.</p>
+        <p class="fragment">It's slow, so maybe leave it to the user.</p>
+        <p class="fragment"><i>Arc</i>-less seems to speed things up a LOT!</p>
       </section>
 
       <section class="title" data-background="m/belka-strelka.jpg">
         <h1>Thank you!</h1>
+        <p><a href="http://immutable.rs">immutable.rs</a></p>
         <p><a href="https://bodil.lol/persistence/">bodil.lol/persistence/</a></p>
         <p>@bodil</p>
+      </section>
+
+      <section class="photo blank meme" data-background="m/belka-strelka.jpg">
+        <p class="bottom small">BELKA & STRELKA</p>
+      </section>
+
+      <section class="reading-list" data-background="m/belka-strelka.jpg">
+        <h3>READING LIST</h3>
+        <p>Okasaki: <i>Purely Functional Data Structures</i></p>
+        <p>L'Orange: <i>Understanding Clojure's Vectors</i></p>
+        <p>Bagwell: <i>Ideal Hash Trees</i></p>
+        <p>Hinze, Paterson: <i>Finger Trees</i></p>
+        <p>Acar, Charguéraud, Rainey: <i>Chunked Sequences</i></p>
+        <p>Stucki, Rompf, Ureche, Bagwell: <i>RRB Vector</i></p>
       </section>
 
       <!-- <section data-repl="on">
